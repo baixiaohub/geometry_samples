@@ -1,0 +1,15 @@
+set(TARGET_NAME tutte_embedding)
+set(SRC_FILES main.cpp)
+
+add_executable(${TARGET_NAME} ${SRC_FILES})
+target_include_directories(${TARGET_NAME} PRIVATE ${PROJECT_DEPS_DIR})
+target_link_libraries(${TARGET_NAME} ${PROJECT_DEPS_LIBS})
+source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${SRC_FILES})
+
+set_target_properties(${TARGET_NAME} PROPERTIES
+                      RUNTIME_OUTPUT_DIRECTORY_DEBUG ${PROJECT_BIN_DIR}/${TARGET_NAME}
+                      RUNTIME_OUTPUT_DIRECTORY_RELEASE ${PROJECT_BIN_DIR}/${TARGET_NAME}
+)
+if(MSVC)
+    set_property(TARGET ${TARGET_NAME} PROPERTY VS_DEBUGGER_WORKING_DIRECTORY ${PROJECT_BIN_DIR}/${TARGET_NAME})
+endif()
