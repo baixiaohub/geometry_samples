@@ -47,7 +47,7 @@ void OnGui()
         // setup weight matrix.
         using Element = Eigen::Triplet<float>;
         std::vector<Element> weight;
-        weight.reserve(numVertex * numVertex);
+        weight.reserve(numVertex * 6); // average valence is 6.
         for (auto v : data.mesh->vertices()) {
             int vi = (int)v.getIndex();
             if (v.isBoundary()) {
