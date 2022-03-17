@@ -26,6 +26,7 @@ VertexData<Vector2> ComputeTutteEmbedding(ManifoldSurfaceMesh &mesh)
 
     size_t numVertex = mesh.nVertices();
     SparseMatrix<float> A(numVertex, numVertex);
+    A.reserve(numVertex * 8); // pre-allocate for better performance.
     Vector<float> b_x(numVertex);
     Vector<float> b_y(numVertex);
     b_x.setZero();
